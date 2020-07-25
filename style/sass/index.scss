@@ -1,0 +1,104 @@
+@import "base";
+section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    color: $black;
+    letter-spacing: 1.5px;
+  }
+  h3 {
+    color: $red;
+    margin-bottom: 3.5rem;
+    letter-spacing: 1.5px;
+    font-weight: 100;
+    font-size: 0.9rem;
+  }
+  .container {
+    width: 16rem;
+    background: $black;
+    box-shadow: 1px 4px 6px 3px $box-shadow;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.5s;
+
+    .textScreen {
+      transition: all 0.5s;
+      height: 3rem;
+      position: relative;
+      margin-bottom: 10px;
+      .text {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-family: $Teko;
+        font-size: 1.3rem;
+      }
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      transition: all 0.5s;
+
+      .btn {
+        height: 2.5rem;
+        width: 25%;
+        background: $lightgrey;
+        color: $white;
+        cursor: pointer;
+        border: 0.5px solid $black;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        font-family: $Teko;
+        text-decoration: none;
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: scale(0.95);
+          transition: all 0.2s;
+        }
+      }
+
+      .btn1 {
+        height: 2.5rem;
+        width: 25%;
+        background: $lightgrey;
+        color: $white;
+        cursor: pointer;
+        border: 0.5px solid $black;
+        font-size: 0.9rem;
+        transition: all 0.2s;
+        font-family: $Teko;
+        text-decoration: none;
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: scale(0.95);
+          transition: all 0.2s;
+        }
+      }
+
+      .btnOperator {
+        background: $darkgrey;
+      }
+
+      .btnEqual {
+        background: $navy;
+      }
+
+      .btnAC {
+        width: 50%;
+        background: $red;
+      }
+      .btnZero {
+        flex: 1.5;
+      }
+    }
+  }
+}

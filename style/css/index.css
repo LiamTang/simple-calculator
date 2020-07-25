@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
+/*font family*/
+/* colors */
+/* media query*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 26px;
+  font-family: "Teko", sans-serif;
+  color: #e6e6e6;
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section h2 {
+  color: #000000;
+  letter-spacing: 1.5px;
+}
+
+section h3 {
+  color: #ac3939;
+  margin-bottom: 3.5rem;
+  letter-spacing: 1.5px;
+  font-weight: 100;
+  font-size: 0.9rem;
+}
+
+section .container {
+  width: 16rem;
+  background: #000000;
+  box-shadow: 1px 4px 6px 3px #47476b;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  transition: all 0.5s;
+}
+
+section .container .textScreen {
+  transition: all 0.5s;
+  height: 3rem;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+section .container .textScreen .text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-family: "Teko", sans-serif;
+  font-size: 1.3rem;
+}
+
+section .container .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.5s;
+}
+
+section .container .buttons .btn {
+  height: 2.5rem;
+  width: 25%;
+  background: #666666;
+  color: #e6e6e6;
+  cursor: pointer;
+  border: 0.5px solid #000000;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: "Teko", sans-serif;
+  text-decoration: none;
+}
+
+section .container .buttons .btn:focus {
+  outline: none;
+}
+
+section .container .buttons .btn:active {
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
+
+section .container .buttons .btn1 {
+  height: 2.5rem;
+  width: 25%;
+  background: #666666;
+  color: #e6e6e6;
+  cursor: pointer;
+  border: 0.5px solid #000000;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: "Teko", sans-serif;
+  text-decoration: none;
+}
+
+section .container .buttons .btn1:focus {
+  outline: none;
+}
+
+section .container .buttons .btn1:active {
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
+
+section .container .buttons .btnOperator {
+  background: #4d4d4d;
+}
+
+section .container .buttons .btnEqual {
+  background: #004466;
+}
+
+section .container .buttons .btnAC {
+  width: 50%;
+  background: #ac3939;
+}
+
+section .container .buttons .btnZero {
+  flex: 1.5;
+}
+/*# sourceMappingURL=index.css.map */

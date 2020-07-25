@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
+
+/*font family*/
+$Teko: "Teko", sans-serif;
+
+/* colors */
+$black: #000000;
+$white: #e6e6e6;
+$darkgrey: #4d4d4d;
+$lightgrey: #666666;
+$red: #ac3939;
+$navy: #004466;
+$box-shadow: #47476b;
+
+/* media query*/
+$small-screen-max: 480px;
+$medium-screen-max: 768px;
+$large-screen-max: 992px;
+$xLarge-screen-max: 1200px;
+
+@mixin smallMedia {
+  @media (max-width:#{$small-screen-max}) {
+    @content;
+  }
+}
+
+@mixin mediumMedia {
+  @media (max-width: #{$medium-screen-max}) {
+    @content;
+  }
+}
+
+@mixin largeMedia {
+  @media (max-width: #{$large-screen-max}) {
+    @content;
+  }
+}
+
+@mixin xLargeMedia {
+  @media (max-width:#{$xLarge-screen-max}) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  font-size: 26px;
+  font-family: $Teko;
+  color: $white;
+  @include xLargeMedia() {
+    font-size: 24px;
+  }
+  @include largeMedia() {
+    font-size: 22px;
+  }
+  @include mediumMedia() {
+    font-size: 20px;
+  }
+  @include smallMedia() {
+    font-size: 18px;
+  }
+}
