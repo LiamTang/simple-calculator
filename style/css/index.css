@@ -71,14 +71,14 @@ section .container {
   transition: all 0.5s;
 }
 
-section .container .textScreen {
+section .container .textArea {
   transition: all 0.5s;
   height: 3rem;
   position: relative;
   margin-bottom: 10px;
 }
 
-section .container .textScreen .text {
+section .container .textArea .text {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -114,42 +114,65 @@ section .container .buttons .btn:active {
   transition: all 0.2s;
 }
 
-section .container .buttons .btn1 {
-  height: 2.5rem;
-  width: 25%;
-  background: #666666;
-  color: #e6e6e6;
-  cursor: pointer;
-  border: 0.5px solid #000000;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  font-family: "Teko", sans-serif;
-  text-decoration: none;
+section .container .buttons .operator {
+  background: #4d4d4d;
 }
 
-section .container .buttons .btn1:focus {
+section .container .buttons .equal {
+  background: #004466;
+  width: 25%;
+  border: 0.5px solid #000000;
+  cursor: pointer;
+}
+
+section .container .buttons .equal:focus {
   outline: none;
 }
 
-section .container .buttons .btn1:active {
+section .container .buttons .equal:active {
   transform: scale(0.95);
   transition: all 0.2s;
 }
 
-section .container .buttons .btnOperator {
-  background: #4d4d4d;
-}
-
-section .container .buttons .btnEqual {
-  background: #004466;
-}
-
-section .container .buttons .btnAC {
+section .container .buttons .clear {
   width: 50%;
   background: #ac3939;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid #000000;
+  cursor: pointer;
 }
 
-section .container .buttons .btnZero {
+section .container .buttons .clear:focus {
+  outline: none;
+}
+
+section .container .buttons .clear:active {
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
+
+section .container .buttons .delete {
+  background: #4d4d4d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  cursor: pointer;
+  border: 0.5px solid #000000;
+}
+
+section .container .buttons .delete:focus {
+  outline: none;
+}
+
+section .container .buttons .delete:active {
+  transform: scale(0.95);
+  transition: all 0.2s;
+}
+
+section .container .buttons .zero {
   flex: 1.5;
 }
 /*# sourceMappingURL=index.css.map */

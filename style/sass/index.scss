@@ -26,7 +26,7 @@ section {
     padding: 10px;
     transition: all 0.5s;
 
-    .textScreen {
+    .textArea {
       transition: all 0.5s;
       height: 3rem;
       position: relative;
@@ -63,18 +63,15 @@ section {
           transition: all 0.2s;
         }
       }
+      .operator {
+        background: $darkgrey;
+      }
 
-      .btn1 {
-        height: 2.5rem;
+      .equal {
+        background: $navy;
         width: 25%;
-        background: $lightgrey;
-        color: $white;
-        cursor: pointer;
         border: 0.5px solid $black;
-        font-size: 0.9rem;
-        transition: all 0.2s;
-        font-family: $Teko;
-        text-decoration: none;
+        cursor: pointer;
         &:focus {
           outline: none;
         }
@@ -84,19 +81,39 @@ section {
         }
       }
 
-      .btnOperator {
-        background: $darkgrey;
-      }
-
-      .btnEqual {
-        background: $navy;
-      }
-
-      .btnAC {
+      .clear {
         width: 50%;
         background: $red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0.5px solid $black;
+        cursor: pointer;
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: scale(0.95);
+          transition: all 0.2s;
+        }
       }
-      .btnZero {
+      .delete {
+        background: $darkgrey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        cursor: pointer;
+        border: 0.5px solid $black;
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          transform: scale(0.95);
+          transition: all 0.2s;
+        }
+      }
+      .zero {
         flex: 1.5;
       }
     }
