@@ -42,6 +42,26 @@ $xLarge-screen-max: 1200px;
   }
 }
 
+@mixin defaultBtnType {
+  height: 2.5rem;
+  width: 25%;
+  background: $lightgrey;
+  color: $white;
+  cursor: pointer;
+  border: 0.5px solid $black;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: $Teko;
+  text-decoration: none;
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: scale(0.95);
+    transition: all 0.2s;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

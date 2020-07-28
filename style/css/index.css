@@ -135,13 +135,21 @@ section .container .buttons .equal:active {
 }
 
 section .container .buttons .clear {
+  height: 2.5rem;
+  width: 25%;
+  background: #666666;
+  color: #e6e6e6;
+  cursor: pointer;
+  border: 0.5px solid #000000;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: "Teko", sans-serif;
+  text-decoration: none;
   width: 50%;
   background: #ac3939;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.5px solid #000000;
-  cursor: pointer;
 }
 
 section .container .buttons .clear:focus {
@@ -154,13 +162,20 @@ section .container .buttons .clear:active {
 }
 
 section .container .buttons .delete {
+  height: 2.5rem;
+  width: 25%;
+  background: #666666;
+  color: #e6e6e6;
+  cursor: pointer;
+  border: 0.5px solid #000000;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  font-family: "Teko", sans-serif;
+  text-decoration: none;
   background: #4d4d4d;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25%;
-  cursor: pointer;
-  border: 0.5px solid #000000;
 }
 
 section .container .buttons .delete:focus {

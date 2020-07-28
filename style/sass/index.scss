@@ -45,23 +45,7 @@ section {
       transition: all 0.5s;
 
       .btn {
-        height: 2.5rem;
-        width: 25%;
-        background: $lightgrey;
-        color: $white;
-        cursor: pointer;
-        border: 0.5px solid $black;
-        font-size: 0.9rem;
-        transition: all 0.2s;
-        font-family: $Teko;
-        text-decoration: none;
-        &:focus {
-          outline: none;
-        }
-        &:active {
-          transform: scale(0.95);
-          transition: all 0.2s;
-        }
+        @include defaultBtnType();
       }
       .operator {
         background: $darkgrey;
@@ -82,36 +66,19 @@ section {
       }
 
       .clear {
+        @include defaultBtnType();
         width: 50%;
         background: $red;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 0.5px solid $black;
-        cursor: pointer;
-        &:focus {
-          outline: none;
-        }
-        &:active {
-          transform: scale(0.95);
-          transition: all 0.2s;
-        }
       }
       .delete {
+        @include defaultBtnType();
         background: $darkgrey;
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 25%;
-        cursor: pointer;
-        border: 0.5px solid $black;
-        &:focus {
-          outline: none;
-        }
-        &:active {
-          transform: scale(0.95);
-          transition: all 0.2s;
-        }
       }
       .zero {
         flex: 1.5;
