@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Teko:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 /*font family*/
 /* colors */
 /* media query*/
@@ -82,8 +83,8 @@ section .container .textArea .text {
   position: absolute;
   bottom: 0;
   right: 0;
-  font-family: "Teko", sans-serif;
-  font-size: 1.3rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
 }
 
 section .container .buttons {
@@ -118,23 +119,23 @@ section .container .buttons .operator {
   background: #4d4d4d;
 }
 
-section .container .buttons .equal {
+section .container .buttons #equal {
   background: #004466;
   width: 25%;
   border: 0.5px solid #000000;
   cursor: pointer;
 }
 
-section .container .buttons .equal:focus {
+section .container .buttons #equal:focus {
   outline: none;
 }
 
-section .container .buttons .equal:active {
+section .container .buttons #equal:active {
   transform: scale(0.95);
   transition: all 0.2s;
 }
 
-section .container .buttons .clear {
+section .container .buttons #clear {
   height: 2.5rem;
   width: 25%;
   background: #666666;
@@ -152,16 +153,16 @@ section .container .buttons .clear {
   align-items: center;
 }
 
-section .container .buttons .clear:focus {
+section .container .buttons #clear:focus {
   outline: none;
 }
 
-section .container .buttons .clear:active {
+section .container .buttons #clear:active {
   transform: scale(0.95);
   transition: all 0.2s;
 }
 
-section .container .buttons .delete {
+section .container .buttons #delete {
   height: 2.5rem;
   width: 25%;
   background: #666666;
@@ -178,11 +179,11 @@ section .container .buttons .delete {
   align-items: center;
 }
 
-section .container .buttons .delete:focus {
+section .container .buttons #delete:focus {
   outline: none;
 }
 
-section .container .buttons .delete:active {
+section .container .buttons #delete:active {
   transform: scale(0.95);
   transition: all 0.2s;
 }

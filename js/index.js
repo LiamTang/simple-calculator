@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const text = document.querySelector('.text');
-  const clear = document.querySelector('.clear');
-  const del = document.querySelector('.delete');
-  const result = document.querySelector('.equal');
+  const clear = document.getElementById('clear');
+  const del = document.getElementById('delete');
+  const result = document.getElementById('equal');
   const buttons = document.querySelectorAll('.btn');
   let flag = false;
 
@@ -16,16 +16,38 @@ document.addEventListener('DOMContentLoaded', () => {
     text.innerHTML = text.innerHTML.substring(0, text.innerHTML.length - 1);
   });
 
+  const validateBeforeInit = (value) => {
+    for (let i = 0; i < value.length; i += 1) {
+      if (value[i] === '0' && value[i + 1] === '0') {
+        text.innerHTML = '0';
+      } else if (value[i] === '.') {
+        text.innerHTML = '0.';
+      }
+    }
+  };
+
   /** handle numbers and operators */
-  for (let i = 0; i < buttons.length; i += 1) {
-    buttons[i].addEventListener('click', (e) => {
-      text.innerHTML += e.target.value;
-    });
-  }
+  const handleDisplay = () => {
+    for (let i = 0; i < buttons.length; i += 1) {
+      buttons[i].addEventListener('click', (e) => {
+        text.innerHTML += e.target.value;
+        const displayValue = text.innerHTML.split('');
+        validateBeforeInit(displayValue);
+      });
+    }
+  };
+
+  handleDisplay();
 
   /** validation before calculating */
   const validation = (firstChar, inputString) => {
-    if (firstChar === '÷' || firstChar === '×' || firstChar === '-' || firstChar === '+') {
+    if (
+      firstChar === '÷'
+      || firstChar === '×'
+      || firstChar === '-'
+      || firstChar === '+'
+      || firstChar === '.'
+    ) {
       text.innerHTML = 'ERROR';
     } else {
       const inputValue = inputString.substring(0, inputString.length);
