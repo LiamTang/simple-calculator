@@ -45,60 +45,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  /** check until there is no divide operator in the array
+   * numbers.splice(index, number of elements to be replaced, new value)
+   * => return a new numbers array
+   */
+  const divide = (numbers, operators) => {
+    let indexDivide = operators.indexOf('÷');
+    while (indexDivide !== -1) {
+      numbers.splice(indexDivide, 2, numbers[indexDivide] / numbers[indexDivide + 1]);
+      operators.splice(indexDivide, 1);
+      indexDivide = operators.indexOf('÷');
+    }
+    return numbers;
+  };
+
+  /** check until there is no Multiplication in the array  */
+  const multiple = (numbers, operators) => {
+    let indexMulti = operators.indexOf('×');
+    while (indexMulti !== -1) {
+      numbers.splice(indexMulti, 2, numbers[indexMulti] * numbers[indexMulti + 1]);
+      operators.splice(indexMulti, 1);
+      indexMulti = operators.indexOf('×');
+    }
+    return numbers;
+  };
+
+  /** check until there is no minus operator in the operators array */
+  /** example: numbers [3,3,3]
+   * numbers.splice(0,2,3-3) => return numbers[0,3]
+   *
+   */
+  const minus = (numbers, operators) => {
+    let indexMinus = operators.indexOf('-');
+    while (indexMinus !== -1) {
+      numbers.splice(
+        indexMinus,
+        2,
+        parseFloat(numbers[indexMinus]) - parseFloat(numbers[indexMinus + 1]),
+      );
+      operators.splice(indexMinus, 1);
+      indexMinus = operators.indexOf('-');
+    }
+    return numbers;
+  };
+
+  const plus = (numbers, operators) => {
+    let indexAdd = operators.indexOf('+');
+    while (indexAdd !== -1) {
+      numbers.splice(
+        indexAdd,
+        2,
+        parseFloat(numbers[indexAdd]) + parseFloat(numbers[indexAdd + 1]),
+      );
+      operators.splice(indexAdd, 1);
+      indexAdd = operators.indexOf('+');
+    }
+    return numbers;
+  };
+
   /** calculating values */
   const calculation = (numbers, operators) => {
     if (flag) {
-      /** sequence is divide, multiplication, minus, plus */
-      /** check until there is no divide operator in the array
-       * numbers.splice(index, number of elements to be replaced, new value)
-       * => return a new numbers array
-       */
-      let indexDivide = operators.indexOf('÷');
-      while (indexDivide !== -1) {
-        numbers.splice(indexDivide, 2, numbers[indexDivide] / numbers[indexDivide + 1]);
-        operators.splice(indexDivide, 1);
-        indexDivide = operators.indexOf('÷');
-      }
+      divide(numbers, operators);
+      multiple(numbers, operators);
+      minus(numbers, operators);
+      plus(numbers, operators);
 
-      /** check until there is no Multiplication in the array  */
-      let indexMulti = operators.indexOf('×');
-      while (indexMulti !== -1) {
-        numbers.splice(indexMulti, 2, numbers[indexMulti] * numbers[indexMulti + 1]);
-        operators.splice(indexMulti, 1);
-        indexMulti = operators.indexOf('×');
-      }
-
-      /** check until there is no minus operator in the operators array */
-      /** example: numbers [3,3,3]
-       * numbers.splice(0,2,3-3) => return numbers[0,3]
-       *
-       */
-      let indexMinus = operators.indexOf('-');
-      while (indexMinus !== -1) {
-        numbers.splice(
-          indexMinus,
-          2,
-          parseFloat(numbers[indexMinus]) - parseFloat(numbers[indexMinus + 1]),
-        );
-        operators.splice(indexMinus, 1);
-        indexMinus = operators.indexOf('-');
-      }
-
-      /** check until there is no add operator in the operators array */
-      /** example: numbers[6,6,6]
-       * numbers.splice(0,2,6+6) => return as numbers[12,6]
-       */
-      let indexAdd = operators.indexOf('+');
-      while (indexAdd !== -1) {
-        numbers.splice(
-          indexAdd,
-          2,
-          parseFloat(numbers[indexAdd]) + parseFloat(numbers[indexAdd + 1]),
-        );
-        operators.splice(indexAdd, 1);
-        indexAdd = operators.indexOf('+');
-      }
-      // array destructing;
       [text.innerHTML] = numbers;
     }
   };
