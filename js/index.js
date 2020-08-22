@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /** clear numbers */
   clear.addEventListener('click', () => {
-    text.innerHTML = '';
+    text.innerHTML = '0';
   });
 
   /** delete a number */
@@ -16,52 +16,47 @@ document.addEventListener('DOMContentLoaded', () => {
     text.innerHTML = text.innerHTML.substring(0, text.innerHTML.length - 1);
   });
 
-  const validateBeforeInit = (value) => {
-    for (let i = 0; i < value.length; i += 1) {
-      if (value[i] === '0' && value[i + 1] === '0') {
-        text.innerHTML = '0';
-      } else if (value[i] === '.') {
-        text.innerHTML = '0.';
-      }
+  const initialValidation = (value) => {
+    if (value[0] === '0' && value[1] === '0') {
+      text.innerHTML = '0';
+    } else if (text.innerHTML.startsWith('0') && value[1] !== '.') {
+      text.innerHTML = text.innerHTML.substring(1, text.innerHTML.length);
+    } else if (text.innerHTML.startsWith('.')) {
+      text.innerHTML = `0${text.innerHTML.slice()}`;
+    } else if (text.innerHTML.startsWith('NaN')) {
+      text.innerHTML = text.innerHTML.substring(3, text.innerHTML.length);
     }
   };
 
   /** handle numbers and operators */
-  const handleDisplay = () => {
-    for (let i = 0; i < buttons.length; i += 1) {
-      buttons[i].addEventListener('click', (e) => {
-        text.innerHTML += e.target.value;
-        const displayValue = text.innerHTML.split('');
-        validateBeforeInit(displayValue);
-      });
-    }
-  };
+  for (let i = 0; i < buttons.length; i += 1) {
+    buttons[i].addEventListener('click', (e) => {
+      text.innerHTML += e.target.value;
 
-  handleDisplay();
+      const displayValue = text.innerHTML.split('');
+      initialValidation(displayValue);
+    });
+  }
 
   /** validation before calculating */
-  const validation = (firstChar, inputString) => {
-    if (
-      firstChar === '÷'
-      || firstChar === '×'
-      || firstChar === '-'
-      || firstChar === '+'
-      || firstChar === '.'
-    ) {
-      text.innerHTML = 'ERROR';
-    } else {
-      const inputValue = inputString.substring(0, inputString.length);
-      for (let i = 0; i < inputValue.length; i += 1) {
-        if (
-          (inputValue[i] === '÷'
-            || inputValue[i] === '×'
-            || inputValue[i] === '-'
-            || inputValue[i] === '+')
-          && inputValue[i] === inputValue[i + 1]
-        ) {
-          text.innerHTML = 'ERROR';
-        } else {
-          flag = true;
+  const secValidation = () => {
+    if (flag === false) {
+      if (text.innerHTML.startsWith(('×', '÷', '+', '-'))) {
+        text.innerHTML = 'NaN';
+      } else {
+        const inputValue = text.innerHTML.split('');
+        for (let i = 0; i < inputValue.length; i += 1) {
+          if (
+            (inputValue[i] === '÷'
+              || inputValue[i] === '×'
+              || inputValue[i] === '-'
+              || inputValue[i] === '+')
+            && inputValue[i] === inputValue[i + 1]
+          ) {
+            text.innerHTML = 'NaN';
+          } else {
+            flag = true;
+          }
         }
       }
     }
@@ -70,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
   /** check until there is no divide operator in the array
    * numbers.splice(index, number of elements to be replaced, new value)
    * => return a new numbers array
+   * example: numbers [3,3,3]
+   * numbers.splice(0,2,3/3) => return numbers[1,3]
    */
   const divide = (numbers, operators) => {
     let indexDivide = operators.indexOf('÷');
@@ -81,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return numbers;
   };
 
-  /** check until there is no Multiplication in the array  */
   const multiple = (numbers, operators) => {
     let indexMulti = operators.indexOf('×');
     while (indexMulti !== -1) {
@@ -92,11 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return numbers;
   };
 
-  /** check until there is no minus operator in the operators array */
-  /** example: numbers [3,3,3]
-   * numbers.splice(0,2,3-3) => return numbers[0,3]
-   *
-   */
   const minus = (numbers, operators) => {
     let indexMinus = operators.indexOf('-');
     while (indexMinus !== -1) {
@@ -127,23 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /** calculating values */
   const calculation = (numbers, operators) => {
-    if (flag) {
-      divide(numbers, operators);
-      multiple(numbers, operators);
-      minus(numbers, operators);
-      plus(numbers, operators);
-
-      [text.innerHTML] = numbers;
-    }
+    divide(numbers, operators);
+    multiple(numbers, operators);
+    minus(numbers, operators);
+    plus(numbers, operators);
+    [text.innerHTML] = numbers;
   };
 
-  /** handle equal  */
+  /** handle equal, get final result */
   result.addEventListener('click', () => {
     const inputString = text.innerHTML;
     const numbers = inputString.split(/\+|-|×|÷/g); // type if array, example ["1","55","33"]
     const operators = inputString.replace(/[0-9]|\./g, '').split(''); // type is array, example ["+","-"]
-    const firstChar = text.innerHTML.substring(0, 1);
-    validation(firstChar, inputString);
-    calculation(numbers, operators);
+    secValidation();
+    if (flag === true) {
+      calculation(numbers, operators);
+    }
   });
 });
